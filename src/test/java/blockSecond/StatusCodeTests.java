@@ -4,6 +4,10 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+/**
+ * В этих тестах получаем статус-коды ответа
+ */
+
 public class StatusCodeTests {
 
     @Test

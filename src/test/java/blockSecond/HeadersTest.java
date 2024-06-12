@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * В этом тесте получаем заголовки и выводим их в различных видах
+ */
+
 public class HeadersTest {
 
     @Test
