@@ -16,7 +16,7 @@ public class LongResponsExercisesTest {
 
         response.prettyPrint();
         String getToken = response.path("token");
-        System.out.println(getToken);
+        int seconds = response.path("seconds");
 
         Response responseWithToken = RestAssured
                 .given()
@@ -27,8 +27,9 @@ public class LongResponsExercisesTest {
         responseWithToken.prettyPrint();
         String status = responseWithToken.path("status");
 
+
         if (status.equals("Job is NOT ready")) {
-            Thread.sleep(16000);
+            Thread.sleep(seconds * 1000L);
             Response nextResponseWithToken = RestAssured
                     .given()
                     .queryParam("token", getToken)
