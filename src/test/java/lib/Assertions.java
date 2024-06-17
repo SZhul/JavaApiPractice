@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Assertions {
 
     public static void assertJsonByName(Response response, String name, int expectedValue) {
-        //проверяем, что во всем боди запроса есть ключ с таким именем
+        //проверяем, что во всем боди ответа есть ключ с таким именем
         response.then().assertThat().body("$", hasKey(name));
 
         //парсим json из ключа name в переменную value
