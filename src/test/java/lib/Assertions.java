@@ -17,4 +17,16 @@ public class Assertions {
         //проверяем, что ожидаемое значение равно value
         assertEquals(expectedValue, value, "Json value is not equal to expected value");
     }
+
+    public static void assertResponseTextEquals(Response response, String expectedAnswer) {
+        assertEquals(expectedAnswer, response.asString(), "Response text is not equal to expected value");
+    }
+
+    public static void assertResponseStatusEquals(Response response, int expectedStatus) {
+        assertEquals(expectedStatus,
+                response.getStatusCode(),
+                "Expected status code is not equal to actual status code");
+    }
+
+
 }
