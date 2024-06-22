@@ -28,5 +28,9 @@ public class Assertions {
                 "Expected status code is not equal to actual status code");
     }
 
+    public static void assertJsonHasKey(Response response, String expectedFieldName) {
+        response.then().assertThat().body("$", hasKey(expectedFieldName));
+    }
+
 
 }
