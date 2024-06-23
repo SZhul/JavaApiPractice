@@ -3,6 +3,7 @@ package lib;
 import io.restassured.response.Response;
 
 import static org.hamcrest.Matchers.hasKey;
+import static org.hamcrest.Matchers.not;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Assertions {
@@ -28,9 +29,21 @@ public class Assertions {
                 "Expected status code is not equal to actual status code");
     }
 
-    public static void assertJsonHasKey(Response response, String expectedFieldName) {
+    public static void assertJsonHasField(Response response, String expectedFieldName) {
         response.then().assertThat().body("$", hasKey(expectedFieldName));
     }
+
+    public static void assertJsonHasFields(Response response, String[] expectedFieldNames) {
+        for (String fieldName : expectedFieldNames) {
+            Assertions.assertJsonHasField(response, fieldName);
+        }
+    }
+
+    public static void assertJsonHasNotField(Response response, String notExpectedFieldName) {
+        response.then().assertThat().body("$", not(hasKey(notExpectedFieldName)));
+    }
+
+
 
 
 }
