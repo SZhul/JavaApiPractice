@@ -19,6 +19,17 @@ public class Assertions {
         assertEquals(expectedValue, value, "Json value is not equal to expected value");
     }
 
+    public static void assertJsonByName(Response response, String name, String expectedValue) {
+        //проверяем, что во всем боди ответа есть ключ с таким именем
+        response.then().assertThat().body("$", hasKey(name));
+
+        //парсим json из ключа name в переменную value
+        String value = response.jsonPath().getString(name);
+
+        //проверяем, что ожидаемое значение равно value
+        assertEquals(expectedValue, value, "Json value is not equal to expected value");
+    }
+
     public static void assertResponseTextEquals(Response response, String expectedAnswer) {
         assertEquals(expectedAnswer, response.asString(), "Response text is not equal to expected value");
     }
@@ -42,8 +53,6 @@ public class Assertions {
     public static void assertJsonHasNotField(Response response, String notExpectedFieldName) {
         response.then().assertThat().body("$", not(hasKey(notExpectedFieldName)));
     }
-
-
 
 
 }
